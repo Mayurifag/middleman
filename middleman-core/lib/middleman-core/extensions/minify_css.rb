@@ -121,7 +121,7 @@ class Middleman::Extensions::MinifyCss < ::Middleman::Extension
     def minify_inline(content)
       content.gsub(INLINE_CSS_REGEX) do
         $1 + minify($2) + $3
-      end
+      end.delete!("\n")
     end
     memoize :minify_inline
   end
